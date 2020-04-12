@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <!-- Custom styling -->
+    <link rel='stylesheet' href='css/styles.css'>
+    <!-- Custom font -->
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Just+Another+Hand&display=swap'>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/logo_scut_logo.png">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+
+    
+
+    <script src='vendor/opencv.js'></script>
+    <!-- TODO: Add Javascript files here -->
+    <script src='drawing.js'></script>
+    <script src='processing.js'></script>
+    <script src='maths.js'></script>
+
+</head>
+
+<body>
+
+    <div class='container'>
+        <!-- TODO: Add title here -->
+        <h1 id='title'>SCUT Math Garden</h1>
+        <h2 id='question'><span id='n1'>3</span> + <span id='n2'>2</span> = </h2>
+        <!-- TODO: Add a drawing canvas here -->
+        <canvas id='my-canvas' width="150" height="150"></canvas>
+        
+        <div class="boxitem">
+            <div id="predictdigit">3</div>
+            <div id="probStr">Probability : 100.00%</div>
+        </div>
+
+        <div class="boxitem">
+            <svg id="probGraph" width="280" height="216">
+                <g transform="translate(20,10)">
+                    <g class="y axis" fill="none" font-size="12" font-family="sans-serif" text-anchor="end">
+                        <path class="domain" stroke="currentColor" d="M-6,196.5H0.5V0.5H-6"></path>
+                        <g class="tick" opacity="1" transform="translate(0,196.5)">
+                            <line stroke="currentColor" x2="-6"></line>
+                            <text fill="currentColor" x="-9" dy="0.32em">9</text>
+                        </g>
+                        <g class="tick" opacity="1" transform="translate(0,174.7222222222222)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">8</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,152.94444444444446)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">7</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,131.16666666666666)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">6</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,109.3888888888889)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">5</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,87.6111111111111)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">4</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,65.83333333333333)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">3</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,44.05555555555555)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">2</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,22.277777777777775)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">1</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,0.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">0</text></g>
+                    </g>
+                    <rect y="-10" height="20" x="0" width="2.024319805478316e-12" fill="none" font-size="10" font-family="sans-serif" text-anchor="end" style="fill: rgb(0, 128, 0);">
+                        <path class="domain" stroke="currentColor" d="M-6,196.5H0.5V0.5H-6"></path>
+                        <g class="tick" opacity="1" transform="translate(0,196.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">9</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,174.7222222222222)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">8</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,152.94444444444446)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">7</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,131.16666666666666)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">6</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,109.3888888888889)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">5</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,87.6111111111111)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">4</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,65.83333333333333)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">3</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,44.05555555555555)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">2</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,22.277777777777775)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">1</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,0.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">0</text></g>
+                    </rect>
+                    <rect y="11.777777777777775" height="20" x="0" width="2.874512849970756e-7" fill="none" font-size="10" font-family="sans-serif" text-anchor="end" style="fill: rgb(0, 128, 0);">
+                        <path class="domain" stroke="currentColor" d="M-6,196.5H0.5V0.5H-6"></path>
+                        <g class="tick" opacity="1" transform="translate(0,196.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">9</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,174.7222222222222)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">8</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,152.94444444444446)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">7</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,131.16666666666666)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">6</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,109.3888888888889)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">5</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,87.6111111111111)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">4</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,65.83333333333333)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">3</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,44.05555555555555)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">2</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,22.277777777777775)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">1</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,0.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">0</text></g>
+                    </rect>
+                    <rect y="33.55555555555555" height="20" x="0" width="2.1550798923186676e-7" fill="none" font-size="10" font-family="sans-serif" text-anchor="end" style="fill: rgb(0, 128, 0);">
+                        <path class="domain" stroke="currentColor" d="M-6,196.5H0.5V0.5H-6"></path>
+                        <g class="tick" opacity="1" transform="translate(0,196.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">9</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,174.7222222222222)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">8</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,152.94444444444446)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">7</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,131.16666666666666)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">6</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,109.3888888888889)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">5</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,87.6111111111111)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">4</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,65.83333333333333)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">3</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,44.05555555555555)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">2</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,22.277777777777775)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">1</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,0.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">0</text></g>
+                    </rect>
+                    <rect y="55.33333333333333" height="20" x="0" width="199.99487400054932" fill="none" font-size="10" font-family="sans-serif" text-anchor="end" style="fill: rgb(0, 0, 255);">
+                        <path class="domain" stroke="currentColor" d="M-6,196.5H0.5V0.5H-6"></path>
+                        <g class="tick" opacity="1" transform="translate(0,196.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">9</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,174.7222222222222)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">8</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,152.94444444444446)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">7</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,131.16666666666666)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">6</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,109.3888888888889)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">5</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,87.6111111111111)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">4</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,65.83333333333333)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">3</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,44.05555555555555)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">2</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,22.277777777777775)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">1</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,0.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">0</text></g>
+                    </rect>
+                    <rect y="77.1111111111111" height="20" x="0" width="1.5740555560361802e-10" fill="none" font-size="10" font-family="sans-serif" text-anchor="end" style="fill: green;">
+                        <path class="domain" stroke="currentColor" d="M-6,196.5H0.5V0.5H-6"></path>
+                        <g class="tick" opacity="1" transform="translate(0,196.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">9</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,174.7222222222222)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">8</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,152.94444444444446)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">7</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,131.16666666666666)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">6</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,109.3888888888889)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">5</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,87.6111111111111)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">4</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,65.83333333333333)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">3</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,44.05555555555555)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">2</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,22.277777777777775)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">1</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,0.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">0</text></g>
+                    </rect>
+                    <rect y="98.8888888888889" height="20" x="0" width="0.004633280332200229" fill="none" font-size="10" font-family="sans-serif" text-anchor="end" style="fill: green;">
+                        <path class="domain" stroke="currentColor" d="M-6,196.5H0.5V0.5H-6"></path>
+                        <g class="tick" opacity="1" transform="translate(0,196.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">9</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,174.7222222222222)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">8</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,152.94444444444446)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">7</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,131.16666666666666)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">6</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,109.3888888888889)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">5</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,87.6111111111111)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">4</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,65.83333333333333)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">3</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,44.05555555555555)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">2</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,22.277777777777775)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">1</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,0.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">0</text></g>
+                    </rect>
+                    <rect y="120.66666666666666" height="20" x="0" width="2.8009468008849403e-9" fill="none" font-size="10" font-family="sans-serif" text-anchor="end" style="fill: green;">
+                        <path class="domain" stroke="currentColor" d="M-6,196.5H0.5V0.5H-6"></path>
+                        <g class="tick" opacity="1" transform="translate(0,196.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">9</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,174.7222222222222)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">8</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,152.94444444444446)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">7</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,131.16666666666666)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">6</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,109.3888888888889)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">5</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,87.6111111111111)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">4</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,65.83333333333333)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">3</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,44.05555555555555)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">2</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,22.277777777777775)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">1</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,0.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">0</text></g>
+                    </rect>
+                    <rect y="142.44444444444446" height="20" x="0" width="5.95694370567057e-10" fill="none" font-size="10" font-family="sans-serif" text-anchor="end" style="fill: rgb(0, 128, 0);">
+                        <path class="domain" stroke="currentColor" d="M-6,196.5H0.5V0.5H-6"></path>
+                        <g class="tick" opacity="1" transform="translate(0,196.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">9</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,174.7222222222222)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">8</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,152.94444444444446)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">7</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,131.16666666666666)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">6</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,109.3888888888889)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">5</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,87.6111111111111)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">4</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,65.83333333333333)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">3</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,44.05555555555555)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">2</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,22.277777777777775)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">1</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,0.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">0</text></g>
+                    </rect>
+                    <rect y="164.2222222222222" height="20" x="0" width="0.0004963443643646315" fill="none" font-size="10" font-family="sans-serif" text-anchor="end" style="fill: rgb(0, 128, 0);">
+                        <path class="domain" stroke="currentColor" d="M-6,196.5H0.5V0.5H-6"></path>
+                        <g class="tick" opacity="1" transform="translate(0,196.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">9</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,174.7222222222222)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">8</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,152.94444444444446)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">7</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,131.16666666666666)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">6</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,109.3888888888889)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">5</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,87.6111111111111)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">4</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,65.83333333333333)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">3</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,44.05555555555555)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">2</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,22.277777777777775)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">1</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,0.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">0</text></g>
+                    </rect>
+                    <rect y="186" height="20" x="0" width="6.741056931408584e-10" fill="none" font-size="10" font-family="sans-serif" text-anchor="end" style="fill: green;">
+                        <path class="domain" stroke="currentColor" d="M-6,196.5H0.5V0.5H-6"></path>
+                        <g class="tick" opacity="1" transform="translate(0,196.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">9</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,174.7222222222222)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">8</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,152.94444444444446)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">7</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,131.16666666666666)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">6</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,109.3888888888889)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">5</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,87.6111111111111)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">4</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,65.83333333333333)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">3</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,44.05555555555555)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">2</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,22.277777777777775)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">1</text></g>
+                        <g class="tick" opacity="1" transform="translate(0,0.5)"><line stroke="currentColor" x2="-6"></line><text fill="currentColor" x="-9" dy="0.32em">0</text></g>
+                    </rect>
+                </g>
+            </svg>
+        </div>
+
+    </div>
+
+    <div class='container'>
+        <button id='checkAnswer' class='btn' value='Check'>Check Answer</button>
+    </div>
+
+    <!-- TODO: Set up TF model and drawing logic-->
+    <script>
+
+        loadModel();
+        prepareCanvas();
+        nextQuestion();
+
+        document.getElementById('checkAnswer').addEventListener('click', function () {
+            checkAnswer();
+            clearCanvas();
+            nextQuestion();
+        });
+
+    </script>
+    <script src="//d3js.org/d3.v5.min.js"></script>
+    <script src="./script.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
+
+</html>
